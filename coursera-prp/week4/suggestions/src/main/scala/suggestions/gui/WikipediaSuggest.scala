@@ -27,6 +27,13 @@ object WikipediaSuggest extends SimpleSwingApplication with ConcreteSwingApi wit
     }
   }
 
+  private val editorpane = new EditorPane {
+    import javax.swing.border._
+    border = new EtchedBorder(EtchedBorder.LOWERED)
+    editable = false
+    peer.setContentType("text/html")
+  }
+
   def top = new MainFrame {
 
     /* gui setup */
@@ -40,12 +47,6 @@ object WikipediaSuggest extends SimpleSwingApplication with ConcreteSwingApi wit
     val searchTermField = new TextField
     val suggestionList = new ListView(ListBuffer[String]())
     val status = new Label(" ")
-    val editorpane = new EditorPane {
-      import javax.swing.border._
-      border = new EtchedBorder(EtchedBorder.LOWERED)
-      editable = false
-      peer.setContentType("text/html")
-    }
 
     contents = new BoxPanel(orientation = Vertical) {
       border = EmptyBorder(top = 5, left = 5, bottom = 5, right = 5)
